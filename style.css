@@ -1,121 +1,220 @@
 :root {
-  --bg: #0d0d0f;          /* latar halaman */
-  --bg-header: #1a1816;   /* latar header */
-  --bg-kartu: #1a1a20;    /* latar kartu */
-  --garis: #2a2a33;       /* garis/border */
-  --teks: #e6e6ea;        /* teks utama */
-  --teks-redup: #9a9aa5;  /* teks sekunder */
-  --aksen: #4f8cff;       /* warna aksen (judul, link) */
+  --bg: #000;
+  --teks: #f2f2f2;
+  --teks-redup: #8c8c94;
+  --garis: #3a3a40;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  font-family: Arial, sans-serif;
   margin: 0;
   background-color: var(--bg);
   color: var(--teks);
+  font-family: Arial, sans-serif;
   line-height: 1.6;
 }
 
+a {
+  color: var(--teks);
+}
+
+/* Header */
 header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px 32px;
-  background-color: var(--bg-header);
-  border-bottom: 1px solid var(--garis);
-  color: var(--teks);
+  padding: 18px 40px;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.9), rgba(0,0,0,0));
 }
 
-header h2 {
-  margin: 0;
-  color: var(--teks);
-}
-
-nav a {
-  color: var(--teks-redup);
-  margin-left: 20px;
+.logo {
+  font-family: "Bebas Neue", Impact, sans-serif;
+  font-size: 1.4rem;
+  letter-spacing: 2px;
   text-decoration: none;
 }
 
+nav a {
+  margin-left: 24px;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--teks-redup);
+}
+
 nav a:hover {
-  color: var(--aksen);
+  color: var(--teks);
 }
 
-section {
-  max-width: 800px;
+/* Sampul */
+.cover {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.judul-raksasa {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  font-family: "Bebas Neue", Impact, sans-serif;
+  font-weight: normal;
+  font-size: clamp(4rem, 22vw, 20rem);
+  line-height: 1;
+  letter-spacing: 2px;
+}
+
+.cover-nama {
+  position: absolute;
+  z-index: 1;
+  top: 28%;
+  right: 6%;
+  margin: 0;
+  letter-spacing: 4px;
+  font-size: 0.9rem;
+  color: var(--teks-redup);
+}
+
+.cover-foto {
+  position: absolute;
+  z-index: 2;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 85%;
+  max-width: 90%;
+  object-fit: contain;
+}
+
+/* Blok isi */
+.blok {
+  max-width: 900px;
   margin: 0 auto;
-  padding: 40px 20px;
+  padding: 90px 24px 40px;
 }
 
-#beranda {
-  text-align: center;
+.kecil {
+  margin: 0;
+  font-size: 0.75rem;
+  letter-spacing: 3px;
+  color: var(--teks-redup);
 }
 
-h1, h2 {
-  color: var(--aksen);
+.judul-nama {
+  margin: 8px 0 20px;
+  font-family: "Bebas Neue", Impact, sans-serif;
+  font-weight: normal;
+  font-size: clamp(3rem, 10vw, 6rem);
+  line-height: 1;
 }
 
-a {
-  color: var(--aksen);
+.judul-bagian {
+  margin: 0 0 8px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--garis);
+  font-family: "Bebas Neue", Impact, sans-serif;
+  font-weight: normal;
+  font-size: clamp(2.2rem, 7vw, 3.5rem);
+  letter-spacing: 1px;
 }
 
-.kartu {
-  background-color: var(--bg-kartu);
+.isi {
+  max-width: 620px;
+  color: var(--teks-redup);
+}
+
+/* Baris pendidikan dan pengalaman */
+.baris {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--garis);
+}
+
+.baris h3 {
+  margin: 0 0 4px;
+  font-size: 1.1rem;
+}
+
+.baris p {
+  margin: 0;
+  color: var(--teks-redup);
+  font-size: 0.95rem;
+}
+
+.tahun {
+  flex-shrink: 0;
+  font-size: 0.85rem;
+  color: var(--teks-redup);
+}
+
+/* Skill */
+.skill {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.skill li {
   border: 1px solid var(--garis);
-  border-radius: 8px;
-  padding: 16px;
-  margin-bottom: 16px;
+  border-radius: 999px;
+  padding: 6px 16px;
+  font-size: 0.9rem;
 }
 
 footer {
   text-align: center;
-  padding: 20px;
+  padding: 40px 20px;
   color: var(--teks-redup);
+  font-size: 0.85rem;
 }
 
-.periode {
-  color: var(--teks-redup);
-  font-size: 0.9rem;
-  margin-top: -8px;
-}
-
-.kartu h3 {
-  margin-top: 0;
-  color: var(--teks);
-}
-
-.kartu ul {
-  padding-left: 20px;
-}
-
-.tag {
-  display: inline-block;
-  background-color: var(--bg);
-  border: 1px solid var(--garis);
-  color: var(--aksen);
-  border-radius: 999px;
-  padding: 2px 12px;
-  font-size: 0.8rem;
-  margin: 4px 4px 0 0;
-}
-
-/* Tampilan untuk layar kecil (HP) */
+/* HP */
 @media (max-width: 600px) {
   header {
     flex-direction: column;
-    gap: 10px;
-    padding: 16px;
+    gap: 6px;
+    padding: 12px 16px;
   }
 
   nav a {
-    margin: 0 10px;
+    margin: 0 8px;
+    font-size: 0.7rem;
   }
 
-  section {
-    padding: 28px 16px;
+  .cover-nama {
+    top: 24%;
+    right: 50%;
+    transform: translateX(50%);
+    font-size: 0.75rem;
   }
 
-  h1 {
-    font-size: 1.6rem;
+  .cover-foto {
+    height: 70%;
+  }
+
+  .baris {
+    flex-direction: column;
+    gap: 4px;
   }
 }
