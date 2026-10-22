@@ -59,48 +59,49 @@ nav a:hover {
   color: var(--teks);
 }
 
-/* Sampul */
+/* Sampul: tulisan di kiri, foto kecil di kanan */
 .cover {
-  position: relative;
   min-height: 100vh;
-  overflow: hidden;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto;
   align-items: center;
-  justify-content: center;
+  gap: 40px;
+  padding: 110px 6% 40px;
 }
 
 .judul-raksasa {
-  position: relative;
-  z-index: 1;
+  grid-column: 1;
+  grid-row: 1;
+  align-self: end;
   margin: 0;
   font-family: "Bebas Neue", Impact, sans-serif;
   font-weight: normal;
-  font-size: clamp(4rem, 22vw, 20rem);
-  line-height: 1;
+  font-size: clamp(3.5rem, 14vw, 13rem);
+  line-height: 0.9;
   letter-spacing: 2px;
 }
 
 .cover-nama {
-  position: absolute;
-  z-index: 1;
-  top: 12%;
-  right: 6%;
-  margin: 0;
-  letter-spacing: 4px;
-  font-size: 0.9rem;
+  grid-column: 1;
+  grid-row: 2;
+  align-self: start;
+  margin: 16px 0 0;
+  letter-spacing: 6px;
+  font-size: 0.95rem;
   color: var(--teks-redup);
 }
 
-.cover::before {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 70vw;
-  height: 70%;
-  background: radial-gradient(ellipse at bottom, #2a2a30 0%, transparent 70%);
-  z-index: 0;
+.cover-foto {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  height: 75vh;
+  max-width: 40vw;
+  object-fit: contain;
+  align-self: end;
+  margin-right: 6vw;
+  filter: drop-shadow(0 0 50px rgba(255, 255, 255, 0));
+  -webkit-mask-image: linear-gradient(to bottom, #000 60%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 60%, transparent 100%);
 }
 
 /* Blok isi */
@@ -190,6 +191,62 @@ footer {
   font-size: 0.85rem;
 }
 
+/* Project */
+.grid-project {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  margin-top: 24px;
+}
+
+.kartu-project {
+  border: 1px solid var(--garis);
+  border-radius: 10px;
+  padding: 20px;
+  transition: border-color 0.2s;
+}
+
+.kartu-project:hover {
+  border-color: var(--teks-redup);
+}
+
+.kartu-project h3 {
+  margin: 0 0 8px;
+  font-size: 1.15rem;
+}
+
+.kartu-project p {
+  margin: 0 0 14px;
+  color: var(--teks-redup);
+  font-size: 0.95rem;
+}
+
+.tag {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag li {
+  border: 1px solid var(--garis);
+  border-radius: 999px;
+  padding: 3px 12px;
+  font-size: 0.8rem;
+}
+
+.link-project {
+  display: flex;
+  gap: 16px;
+  margin: 0 !important;
+}
+
+.link-project a {
+  font-size: 0.9rem;
+}
+
 /* HP */
 @media (max-width: 600px) {
   header {
@@ -203,15 +260,26 @@ footer {
     font-size: 0.7rem;
   }
 
-  .cover-nama {
-    top: 24%;
-    right: 50%;
-    transform: translateX(50%);
-    font-size: 0.75rem;
+    .cover {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+    padding: 100px 5% 30px;
   }
 
+  .judul-raksasa,
+  .cover-nama,
   .cover-foto {
-    height: 70%;
+    grid-column: 1;
+  }
+
+  .judul-raksasa { grid-row: 2; }
+  .cover-nama   { grid-row: 3; }
+
+  .cover-foto {
+    grid-row: 1;
+    height: 45vh;
+    max-width: 70vw;
   }
 
   .baris {
