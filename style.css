@@ -83,7 +83,7 @@ nav a:hover {
 .cover-nama {
   position: absolute;
   z-index: 1;
-  top: 16%;
+  top: 12%;
   right: 6%;
   margin: 0;
   letter-spacing: 4px;
@@ -91,15 +91,16 @@ nav a:hover {
   color: var(--teks-redup);
 }
 
-.cover-foto {
+.cover::before {
+  content: "";
   position: absolute;
-  z-index: 2;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  height: 85%;
-  max-width: 90%;
-  object-fit: contain;
+  width: 70vw;
+  height: 70%;
+  background: radial-gradient(ellipse at bottom, #2a2a30 0%, transparent 70%);
+  z-index: 0;
 }
 
 /* Blok isi */
